@@ -1,5 +1,5 @@
 # adsi-1835271
-Repo de Análisi y desarrollo de sistemas de información.
+Repo de Análisis y desarrollo de sistemas de información.
 ========================================================
 1. emmet
 2. html
