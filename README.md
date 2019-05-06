@@ -1,6 +1,7 @@
 # adsi-1835271
 Repo de Análisis y desarrollo de sistemas de información.
 ========================================================
+0. Sublime text3
 1. emmet
 2. html
 3. html5
