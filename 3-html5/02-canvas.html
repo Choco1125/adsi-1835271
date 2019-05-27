@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+</head>
+<body>
+	<h1>Convas</h1>
+	<h3>Cudarado</h3>
+	<canvas id="cuadrado"></canvas>
+	<h3>Rectángulo</h3>
+	<canvas id="rectangulo"></canvas>
+	<h3>Círculo</h3>
+	<canvas id="circulo"></canvas>
+	<h3>Corazón</h3>
+	<canvas id="corazon"></canvas>
+	<h3>Texto</h3>
+	<canvas id="texto"></canvas>
+	<h3>Triángulo</h3>
+	<canvas id="triangulo"></canvas>
+	<script>
+		var cuadrado = document.getElementById('cuadrado'), ctx=cuadrado.getContext('2d'),rectangulo = document.getElementById('rectangulo'), ctx1=rectangulo.getContext('2d'), circulo = document.getElementById('circulo'), ctx2=circulo.getContext('2d'),corazon = document.getElementById('corazon'), ctx3=corazon.getContext('2d'), texto = document.getElementById('texto'), ctx4=texto.getContext('2d'),triangulo=document.getElementById('triangulo'), ctx5=triangulo.getContext('2d');
+		// cuadrado
+		ctx.fillStyle='#f00';
+		ctx.fillRect(0,0,100,100);
+		// triangulo
+		ctx1.fillStyle='#f00';
+		ctx1.fillRect(0,0,200,100);
+		//Circulo
+		ctx2.beginPath();
+		ctx2.fillStyle = "red";
+		ctx2.arc(50, 50, 50, 0, 2 * Math.PI, false);
+		ctx2.fill();
+		ctx2.closePath();
+		//Corazon
+		ctx3.beginPath();
+		ctx3.fillStyle='#f00';
+	    ctx3.moveTo(75,40);
+	    ctx3.bezierCurveTo(75,37,70,25,50,25);
+	    ctx3.bezierCurveTo(20,25,20,62.5,20,62.5);
+	    ctx3.bezierCurveTo(20,80,40,102,75,120);
+	    ctx3.bezierCurveTo(110,102,130,80,130,62.5);
+	    ctx3.bezierCurveTo(130,62.5,130,25,100,25);
+	    ctx3.bezierCurveTo(85,25,75,37,75,40);
+	    ctx3.fill();
+	    //Texto
+	    ctx4.fillStyle = '#f00';
+  		ctx4.font = 'italic bold 20px sans-serif';
+  		ctx4.textBaseline = 'bottom';
+  		ctx4.fillText('¡Choco es el mejor!', 0, 50);
+  		//Triangulo
+  		ctx5.beginPath();
+	    ctx5.fillStyle = '#f00';
+   		ctx5.moveTo(10,110);
+    	ctx5.lineTo(110,10);
+    	ctx5.lineTo(210,110);
+    	ctx5.fill();
+	</script>
+</body>
+</html>
