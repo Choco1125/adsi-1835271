@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Nuevos elementos de entrada</title>
+</head>
+<body>
+	<h1>Nuevos elementos de entrada</h1>
+	<form method="post" action="">
+		<input type="email" name="" placeholder="Correo ELectrónico" autofocus required="@"> 
+	</form>
+	<div>
+		<label>Color:</label>
+		<form action="" method="post">
+			<input type="color" name="color" id="color" oninput="pcolor.value =this.value">
+			<output id="pcolor"></output>
+		</form>
+	</div>
+	<!--  -->
+	<div>
+		<label>Fecha</label>
+		<input type="date" id="" oninput="pdate	.value =this.value">
+		<output id="pdate" ></output>	
+	</div>
+	<!--  -->
+	<div>
+		<label>Número 1</label>
+		<input type="number" min="0" max="10" step="2" id="numero1" oninput="osuma.value=parseInt(this.value)+parseInt(numero2.value)" value="0">
+		<label>Número 2</label>
+		<input type="number" min="0" max="10" step="2" id="numero2" oninput="osuma.value=parseInt(numero1.value)+parseInt(this.value)" value="0">
+		<output id="osuma"></output>)
+	</div> 
+	<!-- -->
+	<div>
+		<label>Rango</label>
+		<input type="range" name="" min="1" max="100" oninput="orango.value=this.value">
+		<output id="orango"></output>
+	</div>
+	<!-- -->
+	<div>
+		<label>Time</label>
+		<input type="time" name="">
+	</div>
+	<!-- -->
+	<div>
+		<input list="lenguajes">
+		<datalist id="lenguajes">
+			<option value="Python">Python</option>
+			<option value="Ruby">Ruby</option>
+			<option value="csharp">Csharp</option>
+			<option value="Java">Java</option>
+		</datalist>
+	</div>
+	<div>
+		<button type="subtim"> Enviar</button>
+	</div>
+</body>
+</html>
