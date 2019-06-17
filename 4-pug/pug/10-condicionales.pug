@@ -1,0 +1,14 @@
+doctype
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        title Condiciones
+    body
+        h1 Condiciones
+        - var edad=20
+        if edad>=18
+            img(src="imgs/success.png")
+            p Usted puede votar
+        else
+            img(src="imgs/fail.png")
+            p Usted no puede votar
