@@ -1,0 +1,18 @@
+h1{
+    background-color: steelblue;
+    width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    font-family: monospace;
+    border-bottom: 10px solid crimson;
+    border-radius: 10px;
+    box-shadow: 3px 5px 15px lightblue;
+    color: #ffff;
+    transition: all 0.5s ease-in;
+}
+h1:hover{
+    cursor: pointer;
+    border-bottom: 50px solid crimson;
+    transform: scale(1.1);
+}

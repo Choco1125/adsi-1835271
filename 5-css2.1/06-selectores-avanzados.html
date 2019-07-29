@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selectores avanzados</title>
+    <style>
+        ul >li{
+            background-color: aqua;
+            margin: 4px;
+        }
+        ul li +li + li{
+            background-color: fuchsia;
+        }
+        li[class]{
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seletores avanzados</h1>
+    <ol>
+        <li>
+            Mazda
+            <ul>
+                <li class="super">CX5</li>
+                <li>CX9</li>
+                <li>MX5 miata</li>
+            </ul>
+        </li>
+        <li>
+            Kia
+            <ul>
+                <li>Picanto</li>
+                <li>Sportage Revolution</li>
+                <li>Sportage FQ</li>
+            </ul>
+        </li>
+    </ol>
+</body>
+</html>
