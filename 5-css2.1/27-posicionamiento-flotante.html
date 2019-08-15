@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Poscionamiento flotante</title>
+    <style>
+        section{
+            border: 1px solid #555;
+            width: 360px;
+            padding: 10px;
+            margin: 20px auto;
+        }
+        section div{
+            border: 1px solid #555;
+            padding: 20px 10px;
+            width: 95px;
+            background-color: #fff;
+        }
+  
+        section div.box1{
+            float: right;
+        }
+
+        section img{
+            float: left;
+        }
+        section p.clear{
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Poscionamiento flotante</h1>
+    <section>
+        <div class="box1">caja 1</div>
+        <div class="box2">caja 2</div>
+        <div class="box3">caja 3</div>
+    </section>
+
+    <section>
+        <img src="https://thumbs.dreamstime.com/t/muestra-de-no-fumadores-37035801.jpg" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor quis facere accusantium possimus. </p>
+        <p class="clear">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eos sapiente vero maiores est.</p>
+    </section>
+</body>
+</html>

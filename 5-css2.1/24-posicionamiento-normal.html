@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posicionamiento estático</title>
+    <style>
+        main{
+            width: 960px;
+            margin: 0 auto;
+        }
+        main section{
+            display: inline-block;
+            border: 1px solid #555;
+            padding: 10px;
+            width: 448px;
+            vertical-align: top;    
+        }
+        main section.inline{
+            margin-left: 16px;
+        }
+        main section.block div{
+            border: 1px solid #555;
+            padding: 20px;
+            margin: 5px 0;
+        }
+        main section.inline div{
+            border: 1px dashed #9999;
+            padding: 20px 0;
+            margin: 5px 0;
+        }
+        main section.inline div a{
+            border: 1px solid #555;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Posicionamiento estático</h1>
+    <main>
+        <section class="block">
+            <h4>Elementos de bloque</h4>
+            <div>Elemento de bloque</div>
+            <div>Elemento de bloque</div>
+            <div>Elemento de bloque</div>
+        </section>
+        <section class="inline">
+            <h4>Elementos de línea</h4>
+            <div>
+                <a href="">Google</a>
+                <a href="">Yahoo</a>
+            </div>
+            <div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
