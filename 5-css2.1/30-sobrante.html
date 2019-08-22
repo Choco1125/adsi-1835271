@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Overflow</title>
+    <style>
+        .overflow{
+            margin: 0 auto;
+        }
+        .box1,
+        .box2, 
+        .box3{
+            display: inline-block;
+            border: 1px solid #000;
+            width: 200px;
+            height: 300px;
+            margin:  0 0 0 170px;
+            padding: 3px;
+            vertical-align: top;
+        }
+        .box1 h3,
+        .box2 h3, 
+        .box3 h3{
+            background-color: #dbdbdb;
+            padding: 10px;
+            text-align: center;
+            margin: 0;
+        }
+        .box2{
+            overflow: hidden ;
+        }
+        .box3{
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>Overflow</h1>
+    <div class="overflow">
+        <div class="box1">
+            <h3>overflow:visible</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, fuga maxime nulla nesciunt perspiciatis repellendus aspernatur voluptate culpa possimus rerum, hic voluptatum iste velit dignissimos tempore reiciendis alias impedit accusamus, ratione quo ducimus aliquid dolorum reprehenderit atque. Recusandae laborum culpa tenetur officia totam! Quia tenetur, assumenda reiciendis dignissimos nam ut.
+            </p>
+        </div>
+        <div class="box2">
+            <h3>overflow:hidden</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, fuga maxime nulla nesciunt perspiciatis repellendus aspernatur voluptate culpa possimus rerum, hic voluptatum iste velit dignissimos tempore reiciendis alias impedit accusamus, ratione quo ducimus aliquid dolorum reprehenderit atque. Recusandae laborum culpa tenetur officia totam! Quia tenetur, assumenda reiciendis dignissimos nam ut.
+            </p>
+        </div>
+        <div class="box3">
+            <h3>overflow:scroll</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, fuga maxime nulla nesciunt perspiciatis repellendus aspernatur voluptate culpa possimus rerum, hic voluptatum iste velit dignissimos tempore reiciendis alias impedit accusamus, ratione quo ducimus aliquid dolorum reprehenderit atque. Recusandae laborum culpa tenetur officia totam! Quia tenetur, assumenda reiciendis dignissimos nam ut.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
