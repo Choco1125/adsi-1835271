@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Texto (Interlineado)</title>
+    <style>
+        section.lineheight{
+            margin: 10px auto;
+            width: 700px;
+        }
+        section.lineheight div{
+            border: 1px solid #aaa;
+            display: inline-block;
+            vertical-align: top;
+            padding: 10px;
+            width: 150px;
+        }
+        section.lineheight div.lh1{
+           line-height: .5em;
+        }
+        section.lineheight div.lh2{
+           line-height: 1em;
+        }
+        section.lineheight div.lh3{
+           line-height: 1.gem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Texto (Interlineado)</h1>
+        <section class="lineheight">
+            <div class="lh1">
+                <h4>.5em</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, dignissimos autem et qui distinctio laudantium rerum eaque dolore in officiis illum quis consectetur numquam atque aspernatur necessitatibus saepe laborum sit?
+            </div>
+            <div class="lh2">
+                <h4>1em</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, dignissimos autem et qui distinctio laudantium rerum eaque dolore in officiis illum quis consectetur numquam atque aspernatur necessitatibus saepe laborum sit?
+            </div>
+            <div class="lh3">
+                    <h4>1.5em</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, dignissimos autem et qui distinctio laudantium rerum eaque dolore in officiis illum quis consectetur numquam atque aspernatur necessitatibus saepe laborum sit?
+            </div>
+        </section>
+    </main>   
+</body>
+</html>

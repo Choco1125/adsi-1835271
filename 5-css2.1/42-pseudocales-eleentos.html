@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesudo elementos</title>
+    <style>
+        nav.links{
+            margin: 10px auto;
+            width: 600px;
+            font-family: monospace;
+        }
+        nav.links a{
+            display: inline-block;
+            width: 120px;
+            font-size: 1.3em;
+        }
+        nav.links a:link:first-child{
+            color: #000;
+        }
+        nav.links a:link:last-child{
+            color: #004f2f;
+        }
+        nav.links a:link{
+            background-color: #00a787;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            border-bottom: 3px solid #114939;
+            transition: all .5s ease-in
+        }
+        nav.links a:hover{
+            background-color: #114939;
+            border-bottom: 3px solid #00a787;
+            transform: scale(1.1);
+        }
+        nav.links a:active{
+            background-color: #3da0c7;
+            border-bottom: 3px solid #024e58;
+        }
+        input.input{
+            outline: none;
+            border: 1px solid #00a787;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        input.input:focus{
+            border: 1px dotted #114939;
+        }
+        p{
+            width: 600px;
+            padding: 10px;
+            margin: 10px auto;
+        }
+        p:first-letter{
+            color: #114939;
+            font-size: 5em;
+        }
+        p:first-line{
+            text-decoration: line-through;
+        }
+        div.box{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #f0c0fd;
+        }
+        div.box:before{
+            content: '';
+            position: absolute;
+            background-color: red;
+            left: 10px;
+            width: 200px;
+            height: 200px;
+            z-index: 2;
+        }
+        div.box:after{
+            content: '';
+            position: absolute;
+            background-color: blue;
+            left: 20px;
+            width: 200px;
+            height: 200px;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Pesudo elementos</h1>
+        <h2>Enlaces (Link, visited, active, hover)</h2>
+        <nav class="links">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact Us</a>
+        </nav>
+        <h2>Elemento de entrada Formulario (Focus)</h2>
+        <input type="text" class="input" placeholder="Ingrese el correo">
+        <h2>First-letter y First-line</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet molestias quisquam vel itaque accusantium eos porro incidunt distinctio sequi, aliquam quaerat possimus quod dicta ab reiciendis ea esse mollitia ipsum?
+        </p>
+        <h2>Antes/desupés</h2>
+        <div class="box"></div>
+    </main>
+</body>
+</html>

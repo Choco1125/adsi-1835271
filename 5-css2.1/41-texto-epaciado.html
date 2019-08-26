@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Texto (Espaciado)</title>
+    <style>
+        section.epacing{
+            margin: 10px auto;
+            width: 700px;
+        }
+        section.epacing div{
+            border: 1px solid #aaa;
+            display: inline-block;
+            vertical-align: top;
+            padding: 10px;
+            width: 300px;
+        }
+        section.epacing div.ls{letter-spacing: .5em;}
+        section.epacing div.ws{word-spacing: 2em;}
+        
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Texto (Espaciado)</h1>
+        <section class="epacing">
+                <div class="ls">
+                    <h4>letter-pacing: .5em</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae provident at omnis, eius ducimus molestias numquam temporibus eligendi sint sapiente, quas nobis? Eum esse, sint voluptates voluptatum praesentium sed?</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae provident at omnis, eius ducimus molestias numquam temporibus eligendi sint sapiente, quas nobis? Eum esse, sint voluptates voluptatum praesentium sed?</p>
+                </div>
+                <div class="ws">
+                    <h4>word-spacing: 2em</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae provident at omnis, eius ducimus molestias numquam temporibus eligendi sint sapiente, quas nobis? Eum esse, sint voluptates voluptatum praesentium sed?</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae provident at omnis, eius ducimus molestias numquam temporibus eligendi sint sapiente, quas nobis? Eum esse, sint voluptates voluptatum praesentium sed?</p>
+                </div>
+            </section>
+    </main>
+</body>
+</html>
