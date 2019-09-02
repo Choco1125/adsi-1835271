@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sprites (Imágenes)</title>
+    <style>
+        section.sprite {
+            width: 50px;
+            height: 50px;
+            border: 1px solid crimson;
+            margin: 0 auto;
+            background: url('./imgs/gengar-sprite.png') no-repeat;
+        }
+
+        section.sprite.sp1 {
+            background-position: 0px 0;
+        }
+
+        section.sprite.sp2 {
+            background-position: -49px 0;
+        }
+
+        section.sprite.sp3 {
+            background-position: -98px 0
+        }
+
+        section.sprite.sp4 {
+            background-position: 0 -49px
+        }
+
+        section.sprite.sp5 {
+            background-position: -49px -49px
+        }
+        section.sprite.sp6 {
+            background-position: -98px -49px
+        }
+        section.sprite.sp7 {
+            background-position: -0px -96px
+        }
+        section.sprite.sp8 {
+            background-position: -49px -96px
+        }
+        section.sprite.sp9 {
+            background-position: -98px -96px
+        }
+        section.sprite.sp10 {
+            background-position: -0px -145px
+        }
+        section.sprite.sp11 {
+            background-position: -49px -145px
+        }
+        section.sprite.sp12 {
+            background-position: -98px -145px
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Sprites (Imágenes)</h1>
+        <section class="sprite"></section>
+    </main>
+    <script>
+        let sp = document.getElementsByClassName('sprite')[0],
+        ct=1,
+        si=setInterval(()=>{
+            sp.classList.remove('sp'+(ct-1));
+            if(ct===14){
+                ct=1;
+            }
+            sp.classList.add('sp'+ct);
+            ct++;
+        },280);
+    </script>
+</body>
+
+</html>
