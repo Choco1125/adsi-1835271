@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #428ec6;
+    font-size: 1em;
+    color: #1d4e6f;
+    font-family: monospace;
+}
+main{
+    width: 800px;
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+main header{
+    border-bottom: 4px solid dodgerblue;
+    background-color: #133348;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+main header h1,
+main section h3{
+    text-align: center;
+}
