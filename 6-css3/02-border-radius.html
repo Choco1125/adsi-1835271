@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Border(Radio)</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <style>
+        div.box{
+            border: 3px solid #418485;
+            height: 350px;
+            width: 350px;
+            margin: 10px auto;
+        }
+        div.box1{
+            border-radius: 50%;
+        }
+        div.box2{
+            border-radius: 40px 0;
+        }
+        div.box3{
+            border-radius: 140px 0 0 140px;
+            height: 150px;
+        }
+        div.box4{
+            border-radius: 130px 0 130px 140px;
+            
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Border(Radio)</h1>
+        </header>
+        <section>
+            <h3>Border-radius: 50%</h3>
+            <div class="box box1"></div>
+        </section>
+        <section>
+            <h3>Border-radius: 40px 0px</h3>
+            <div class="box box2"></div>
+        </section>
+        <section>
+            <h3>Border-radius: 140px 0 0 140px</h3>
+            <div class="box box3"></div>
+        </section>
+        <section>
+            <h3>Border-radius: 130px 0 130px 140px</h3>
+            <div class="box box4"></div>
+        </section>
+    </main>
+</body>
+</html>

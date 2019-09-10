@@ -8,11 +8,36 @@
     <link rel="stylesheet" href="./css/master.css">
     <style>
         ul.planguages li:first-of-type,
-        ul.frontend li:last-of-type{
+        ul.frontend li:last-of-type,
+        ul.databases li:nth-child(3){
             background-color: #7ab862;
             border-radius: 5px;
             padding: 5px;
             color: #ffffff;
+        }
+        nav a:link,
+        nav a:visited{
+            color: #7ab862; 
+        }
+        article{
+            display: none;
+        }
+        article#home:target,
+        article#services:target,
+        article#contact:target{
+            background-color: steelblue;
+            display: block;
+            color: #ffffff;
+            font-size: 1em;
+        }
+        p.yellow::selection{
+            background-color: yellow;
+        }
+        p.blue::selection{
+            background-color: blue;
+        }
+        p.red::selection{
+            background-color: red;
         }
     </style>
 </head>
@@ -30,13 +55,49 @@
             </ul>
         </section>
         <section>
-                <h3>li:last-of-type (Selecciona el último elemento de tipo li)</h3>
-                <ul class="frontend">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JS</li>
-                </ul>
-            </section>
+            <h3>li:last-of-type (Selecciona el último elemento de tipo li)</h3>
+            <ul class="frontend">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+            </ul>
+        </section>
+        <section>
+            <h3>li:nth-child(n) (Selecciona el elemento número n )</h3>
+            <ul class="databases">
+                <li>MySQL</li>
+                <li>Maria DB</li>
+                <li>Posgress</li>
+                <li>SQL Server</li>
+                <li>Oracle</li>
+            </ul>
+        </section>
+        <h3>Section:target (selecciona el ancla activa)</h3>
+        <nav>
+            <a href="#home">Home</a>|
+            <a href="#services">Services</a>|
+            <a href="#contact">Contact</a>
+        </nav>
+        <article id="home">
+            <h4>Home</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum dolores quam soluta voluptas maiores eius accusamus veniam ab, modi aliquid omnis dolor officia animi necessitatibus, voluptatum laborum, ea provident explicabo.</p>
+        </article>
+        <article id="services">
+            <h4>Services</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum dolores quam soluta voluptas maiores eius accusamus veniam ab, modi aliquid omnis dolor officia animi necessitatibus, voluptatum laborum, ea provident explicabo.</p>
+        </article>
+        <article id="contact">
+            <h4>Contact</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum dolores quam soluta voluptas maiores eius accusamus veniam ab, modi aliquid omnis dolor officia animi necessitatibus, voluptatum laborum, ea provident explicabo.</p>
+        </article>
+        <br>
+        <br>
+        <br>
+        <h3>::selection</h3>
+        <p class="yellow">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quidem beatae ex, culpa excepturi in commodi? Animi nesciunt fugiat placeat modi iste! Provident veniam explicabo, velit obcaecati tempora autem molestiae.</p>
+        <p class="blue">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quidem beatae ex, culpa excepturi in commodi? Animi nesciunt fugiat placeat modi iste! Provident veniam explicabo, velit obcaecati tempora autem molestiae.</p>
+        <p class="red">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quidem beatae ex, culpa excepturi in commodi? Animi nesciunt fugiat placeat modi iste! Provident veniam explicabo, velit obcaecati tempora autem molestiae.</p>
+
     </main>
 </body>
 </html>
