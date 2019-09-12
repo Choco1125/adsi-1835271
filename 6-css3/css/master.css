@@ -24,6 +24,7 @@ main header{
     margin-bottom: 40px;
 }
 main header h1,
-main section h3{
+main section h3,
+main section h2{
     text-align: center;
 }
