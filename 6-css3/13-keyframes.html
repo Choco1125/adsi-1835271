@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animaciones</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <style>
+        section{
+            background: url('img/garden.jpeg') no-repeat center;
+            background-size: cover;
+            margin: 20px auto;
+            height: 480px;
+            position: relative;
+        }
+        div.bird{
+            background: url('img/bird.png') no-repeat center;
+            height: 80px;
+            background-size: cover;
+            width: 120px;
+            position: absolute;
+            animation: animBrid 5s ease-in infinite;
+        }
+        @keyframes animBrid{
+            0%{
+                left: 0px;
+                top: 0;
+                transform: rotateY(0deg);
+            }
+            30%{
+                top: 250px;
+                left: 300px;
+            }
+            35%{
+                top: 250px;
+                left: 300px;
+            }
+            50%{
+                transform: rotateY(0deg) scale(1.5);
+                left: 600px;
+                top: 200px;
+            }
+            51%{
+                left: 600px;
+                top: 400px;
+                transform: rotateY(180deg) scale(2) skew(25deg);
+            }
+            100%{
+                left: 10px;
+                top: 10px;
+                transform: rotateY(180deg);
+            }
+        }        
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Animaciones</h1>
+        </header>
+        <section>
+            <div class="bird"></div>
+        </section>
+    </main>
+</body>
+</html>

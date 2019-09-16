@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transformaciones</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <style>
+        div.box{
+            background: url(./img/aron.png) no-repeat center;
+            width: 380px;
+            height: 380px;
+            margin: 20px auto;
+        }
+        div.box1{transform: translate(120px ,15px);}
+        div.box2{transform: rotate(60deg);}
+        div.box3{transform: scale(.5);}
+        div.box4{transform: skew(10deg);}
+        div.box5{transform: rotate(45deg) scale(.8);}
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Transformaciones</h1>
+        </header>
+        <section>
+            <h3>Taslate()</h3>
+            <div class="box box1"></div>
+            <h3>Rotate()</h3>
+            <div class="box box2"></div>
+            <h3>Scale()</h3>
+            <div class="box box3"></div>
+            <h3>Skew()</h3>
+            <div class="box box4"></div>
+            <h3>rotate() scale()</h3>
+            <div class="box box5"></div>
+        </section>
+    </main>
+</body>
+</html>
