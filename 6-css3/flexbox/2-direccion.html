@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Activar flex-box</title>
+    <style>
+        body {
+            font: 16px Arial, "Helvetica Neue", Helvetica, sans-serif;
+            color: #666;
+        }
+
+        ul.fruits {
+            background-color: pink;
+            border-radius: 4px;
+            display: flex;
+            height: 768px;
+            list-style: none;
+            padding: 0;
+            margin: 0 10px;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+
+        ul.fruits li {
+            background: lightgreen;
+            border-radius: 4px;
+            margin: 4px;
+            height: 220px;
+            width: 220px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Activar flex-box</h1>
+    <h5></h5>
+    <h1>flex-direction: row;</h1>
+    <ul class="fruits">
+        <li><img src="img/grapes.svg"></li>
+        <li><img src="img/orange.svg"></li>
+        <li><img src="img/pear.svg"></li>
+        <li><img src="img/grapes.svg"></li>
+        <li><img src="img/orange.svg"></li>
+        <li><img src="img/pear.svg"></li>
+    </ul>
+</body>
+
+</html>

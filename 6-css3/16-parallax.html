@@ -1,17 +1,119 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Parallax</title>
-    <link rel="stylesheet" href="./6-css3/css/master.css">
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        .parallax {
+            position: relative;
+            height: 576px;
+        }
+
+        .layer {
+            height: 576px;
+            width: 1024px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .layer8 {
+            background: url(img/layer_08.png);
+        }
+
+        .layer7 {
+            background: url(img/layer_07.png);
+            animation: animLayer 70s linear infinite;
+        }
+
+        .layer6 {
+            background: url(img/layer_06.png);
+            animation: animLayer 60s linear infinite;
+        }
+
+        .layer5 {
+            background: url(img/layer_05.png);
+            animation: animLayer 50s linear infinite;
+        }
+
+        .layer4 {
+            background: url(img/layer_04.png);
+            animation: animLayer 40s linear infinite;
+        }
+
+        .layer3 {
+            background: url(img/layer_03.png);
+            animation: animLayer 30s linear infinite;
+        }
+
+        .layer2 {
+            background: url(img/layer_02.png);
+            animation: animLayer 20s linear infinite;
+        }
+
+        .layer1 {
+            background: url(img/layer_01.png);
+            animation: animLayer 10s linear infinite;
+        }
+
+        .mario {
+            background: url(img/mario.gif);
+            background-size: cover;
+            height: 100px;
+            width: 150px;
+            top: 350px;
+            left: 50px;
+        }
+
+        @keyframes animLayer {
+            0% {
+                background-position: 0px;
+            }
+
+            100% {
+                background-position: -2048px;
+            }
+        }
+    </style>
 </head>
-<body>
+
+<body onkeydown="tecla(event)">
     <main>
         <header>
             <h1>Parallax</h1>
         </header>
+        <section>
+            <div class="parallax">
+                <div class="layer layer8"></div>
+                <div class="layer layer7"></div>
+                <div class="layer layer6"></div>
+                <div class="layer layer5"></div>
+                <div class="layer layer4"></div>
+                <div class="layer layer3"></div>
+                <div class="layer layer2"></div>
+                <div class="layer layer1"></div>
+                <div class="layer mario" id="run"></div>
+            </div>
+        </section>
     </main>
+    <script>
+        function tecla(event) {
+            var codigo = event.which || event.keyCode;
+            console.log("Presionada: " + codigo)
+            var run = document.getElementById('run');
+            if(codigo===38){
+                run.style.top = "300px";
+                setTimeout(()=>{
+                    run.style.top="350px";
+                }, 500)
+            }
+        }
+    </script>
 </body>
+
+
 </html>
