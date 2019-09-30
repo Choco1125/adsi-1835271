@@ -1,0 +1,8 @@
+body main section.conent article {
+  display: inline-block;
+  width: calc(98%/3);
+  height: 200px;
+  background: linear-gradient(#000, #fff, #f00);
+  border: 1px solid #333;
+  border-radius: 15px;
+}

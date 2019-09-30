@@ -1,0 +1,15 @@
+$color: #000;
+$fuente: monospace;
+$borde: none;
+.titulo2{
+    color: $color;
+    font-size: 3em ;
+    font-family: $fuente;
+    border: $borde;
+}
+
+body main section.conent p{
+    @extend .titulo2;
+    font-size: 1em;
+    text-align: center;     
+}

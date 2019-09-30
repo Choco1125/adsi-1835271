@@ -1,0 +1,11 @@
+.titulo2, body main section.conent p {
+  color: #000;
+  font-size: 3em;
+  font-family: monospace;
+  border: none;
+}
+
+body main section.conent p {
+  font-size: 1em;
+  text-align: center;
+}

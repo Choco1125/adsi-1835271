@@ -1,0 +1,3 @@
+@for $i from 3 through 1{
+    body main section.conent p#p#{$i} {font-size: 1em*$i}
+}

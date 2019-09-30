@@ -1,0 +1,9 @@
+$color: #000;
+$fuente: monospace;
+$borde: none;
+body main section.conent h2{
+    color: $color;
+    font-size: 3em ;
+    font-family: $fuente;
+    border: $borde;
+}

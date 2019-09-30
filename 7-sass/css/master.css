@@ -1,0 +1,22 @@
+body {
+  background-color: #d94d9b;
+}
+body main {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  width: 960px;
+}
+body main header h1 {
+  color: #742d56;
+  border-bottom: 2px solid #742d56;
+  text-align: center;
+}
+body main section.conent {
+  color: #5f5ed0;
+}
+body main section.conent h2, body main section.conent h3 {
+  color: #742d56;
+  border-bottom: 2px solid #742d56;
+  text-align: center;
+}

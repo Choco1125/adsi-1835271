@@ -1,0 +1,12 @@
+@mixin  bordes($tamani,$color,$radio) {
+    border: $tamani solid $color;
+    border-radius: $radio; 
+}
+
+body main section.conent article{
+    display: inline-block;
+    width: calc(98%/3);
+    height: 200px;
+    background: linear-gradient(#000, #fff,#f00);
+    @include bordes(1px,#333,15px)
+}
