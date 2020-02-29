@@ -1,0 +1,49 @@
+body{
+    background-color: #30882b;
+    background-image: linear-gradient(to right, rgba(73, 228, 13, 0.07) 50%, transparent 0);
+    background-size: 70px 100%;
+    background-position: center;
+    overflow: auto;
+}
+
+main.game{
+    margin: 5px auto;
+    width: 809px;
+}
+
+main.game header.title{
+    height: 96px;
+    background: url('./../imgs/game/titulo.png') no-repeat center !important;
+    margin: 1px auto 0;
+    width: 602px;
+}
+
+main.game section.screen{
+    margin: 0 auto ;
+    width: 809px;
+    background: url('./../imgs/game/menu.png') no-repeat center !important;
+    position: relative;
+    height: 541px;
+}
+
+main.game section.screen button{
+    position: relative;
+    width: 467px;
+    height: 82px;
+    position: absolute;
+    border: none;
+    left: 200px;  
+    cursor: pointer;
+    outline: none;
+}
+
+main.game section.screen button#btn-play{
+    background: url('./../imgs/game/btn-play.png') no-repeat center !important;
+    top: 30%;
+
+}
+main.game section.screen button#btn-credits{
+    background: url('./../imgs/game/btn-creditos.png') no-repeat center !important;
+    top: 50%;
+
+}
