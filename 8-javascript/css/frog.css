@@ -10,7 +10,10 @@ main.game{
     margin: 5px auto;
     width: 809px;
 }
-
+main.game  section.hide{
+    display: none;
+}
+/* home screen */
 main.game header.title{
     height: 96px;
     background: url('./../imgs/game/titulo.png') no-repeat center !important;
@@ -18,7 +21,7 @@ main.game header.title{
     width: 602px;
 }
 
-main.game section.screen{
+main.game section.screen-home{
     margin: 0 auto ;
     width: 809px;
     background: url('./../imgs/game/menu.png') no-repeat center !important;
@@ -26,7 +29,7 @@ main.game section.screen{
     height: 541px;
 }
 
-main.game section.screen button{
+main.game section.screen-home button{
     position: relative;
     width: 467px;
     height: 82px;
@@ -37,13 +40,151 @@ main.game section.screen button{
     outline: none;
 }
 
-main.game section.screen button#btn-play{
+main.game section.screen-home button#btn-play{
     background: url('./../imgs/game/btn-play.png') no-repeat center !important;
     top: 30%;
 
 }
-main.game section.screen button#btn-credits{
+main.game section.screen-home button#btn-credits{
     background: url('./../imgs/game/btn-creditos.png') no-repeat center !important;
     top: 50%;
 
+}
+/* screen play */
+main.game section.screen-play{
+    margin: 0 auto ;
+    width: 809px;
+    background: url('./../imgs/game/mundo.png') no-repeat center !important;
+    position: relative;
+    height: 541px;
+    overflow: hidden;
+}
+
+main.game section.screen-play div.car{
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 101px;
+    margin-top: 2px;
+    height: 55px;
+    position: absolute;
+    left: 700px;
+    top: 302px;
+    /* transition: all .005s linear; */
+    z-index: 2;
+    background-size: contain;
+}
+
+main.game section.screen-play div.car0{
+    background-image: url('./../imgs/game/car-fast.png');
+}
+main.game section.screen-play div.car1{
+    background-image: url('./../imgs/game/car-fast.png');
+}
+main.game section.screen-play div.car2{
+    background-image: url('./../imgs/game/police-car.png');
+    
+}
+main.game section.screen-play div.car3{
+    background-image: url('./../imgs/game/car-green.png');
+    
+
+}
+main.game section.screen-play div.car4{
+    background-image: url('./../imgs/game/camioneta\ \(2\).png');
+}
+
+main.game section.screen-play #frog{
+    background: url('./../imgs/game/frog.png') no-repeat center;
+    width: 66px;
+    height: 60px;
+    position: absolute;
+    left: 370px;
+    top: 480px;
+    /* transition: all .1s ease-in; */
+}
+
+
+main.game section.screen-play ul.hearts{
+    
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 145px;
+    margin: 0;
+    z-index: 3;
+}
+main.game section.screen-play ul.hearts li{
+    display: inline-block;
+    height: 47px;
+    width: 45px;
+}
+
+main.game section.screen-play ul.hearts li.heart.active{
+    background: url('./../imgs//game/corazon-red.png') center no-repeat;
+    animation: 1s animHearts ease-in infinite;
+}
+main.game section.screen-play ul.hearts li.heart{
+    background: url('./../imgs//game/corazon-gris.png') center no-repeat;
+    
+}
+@keyframes animHearts{
+    0%,100%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.05);
+    }
+}
+
+/* screen credists */
+main.game section.screen-credits{
+    margin: 0 auto ;
+    width: 809px;
+    background: url('./../imgs/game/credits.png') no-repeat center !important;
+    position: relative;
+    height: 541px;
+}
+
+main.game section.screen-credits button{
+    position: relative;
+    width: 467px;
+    height: 82px;
+    position: absolute;
+    border: none;
+    left: 180px;  
+    cursor: pointer;
+    outline: none;
+}
+
+main.game section.screen-credits button#btn-back{
+    background: url('./../imgs/game/btn-volvet.png') no-repeat center !important;
+    top: 80%;
+
+}
+
+
+main.game section.screen-game-over{
+    margin: 0 auto ;
+    width: 809px;
+    background: url('./../imgs/game/game-over.png') no-repeat center !important;
+    position: relative;
+    height: 541px;
+}
+
+main.game section.screen-game-over button{
+    position: relative;
+    width: 467px;
+    height: 82px;
+    position: absolute;
+    border: none;
+    left: 180px;  
+    cursor: pointer;
+    outline: none;
+}
+
+main.game section.screen-game-over button#btn-bc{
+    background: url('./../imgs/game/btn-gameover.png') no-repeat center !important;
+    top: 70%;
 }
