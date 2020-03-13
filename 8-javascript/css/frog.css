@@ -54,7 +54,7 @@ main.game section.screen-home button#btn-credits{
 main.game section.screen-play{
     margin: 0 auto ;
     width: 809px;
-    background: url('./../imgs/game/mundo.png') no-repeat center !important;
+    background: url('./../imgs/game/mundo.png') no-repeat center;
     position: relative;
     height: 541px;
     overflow: hidden;

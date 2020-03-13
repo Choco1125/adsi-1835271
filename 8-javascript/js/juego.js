@@ -56,9 +56,17 @@ let game = {
 
                     break;
                 case 38:
+                    // console.log(game.posTop);
+                    
                     if (game.posTop > 0) {
                         game.posTop -= 60;
                         frog.style.top = game.posTop + 'px';
+                        if(game.posTop==0){
+                            setTimeout(()=>{
+                                screens[1].style.background= "url('imgs/game/level-2.png') no-repeat center";
+                                game.resetFrog();
+                            },200);
+                        }
                     }
                     break;
                 case 40:
@@ -168,11 +176,12 @@ let game = {
         if (carright  > forgleft && carleft   < forgright  && cartop    < forgbottom && carbottom > forgtop ) {
             game.checkLives();
             game.resetFrog();
+            screens[1].classList.add('shake');
+            screens[1].classList.remove('bounceInUp');
         }
     },
     resetFrog: ()=>{
-        screens[1].classList.add('shake');
-        screens[1].classList.remove('bounceInUp');
+        
         setTimeout(()=>screens[1].classList.remove('shake'),500);
         game.posLeft = 370;
         game.posTop = 480;
