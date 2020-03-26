@@ -188,3 +188,28 @@ main.game section.screen-game-over button#btn-bc{
     background: url('./../imgs/game/btn-gameover.png') no-repeat center !important;
     top: 70%;
 }
+
+main.game section.screen-win{
+    margin: 0 auto ;
+    width: 809px;
+    background: url('./../imgs/game/win.png') no-repeat center !important;
+    position: relative;
+    height: 541px;
+}
+
+
+main.game section.screen-win button{
+    position: relative;
+    width: 467px;
+    height: 82px;
+    position: absolute;
+    border: none;
+    left: 180px;  
+    cursor: pointer;
+    outline: none;
+}
+
+main.game section.screen-win button#btn-bc2{
+    background: url('./../imgs/game/btn-gameover.png') no-repeat center !important;
+    top: 70%;
+}

@@ -2,6 +2,7 @@ let play = document.getElementById('btn-play');
 let credits = document.getElementById('btn-credits');
 let volver = document.getElementById('btn-back');
 let btnTryAgain = document.getElementById('btn-bc');
+let btnTryAgain2 = document.getElementById('btn-bc2');
 let screens = document.getElementsByClassName('screen');
 let frog = document.getElementById('frog');
 let cars = document.getElementsByClassName('car');
@@ -20,8 +21,15 @@ play.onclick = () =>{
 btnTryAgain.onmouseover = () => game.btnAddFx(btnTryAgain);
 btnTryAgain.onmouseout = () =>game.btnRemoveFx(btnTryAgain);
 btnTryAgain.onclick = () =>{ 
-    window.location ='http://127.0.0.1:5500/8-javascript/08-juego.html';
+    window.location ='08-juego.html';
 }
+
+btnTryAgain2.onmouseover = () => game.btnAddFx(btnTryAgain2);
+btnTryAgain2.onmouseout = () =>game.btnRemoveFx(btnTryAgain2);
+btnTryAgain2.onclick = () =>{ 
+    window.location ='08-juego.html';
+}
+
 credits.onmouseover = () => game.btnAddFx(credits);
 credits.onmouseout = () => game.btnRemoveFx(credits);
 credits.onclick = () => game.screenTo(0, 2);
@@ -32,6 +40,7 @@ volver.onclick = () => game.screenTo(2, 0);
 let game = {
     posLeft: 370,
     posTop: 480,
+    level2: false,
     startGame: () => {
         game.moveFrog();
         game.renderCars();
@@ -63,8 +72,13 @@ let game = {
                         frog.style.top = game.posTop + 'px';
                         if(game.posTop==0){
                             setTimeout(()=>{
-                                screens[1].style.background= "url('imgs/game/level-2.png') no-repeat center";
-                                game.resetFrog();
+                                if(game.level2==false){
+                                    screens[1].style.background= "url('imgs/game/level-2.png') no-repeat center";
+                                    game.resetFrog();
+                                    game.level2 = true;
+                                }else{
+                                    game.screenTo(1,4)
+                                }
                             },200);
                         }
                     }
