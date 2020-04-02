@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header{
+    height: 70px;
+    background: url('./../imgs/baloto/logoBaloto.png') no-repeat center;
+    animation: saltar 3s infinite;
+    margin: 20px auto 10px;
+    width: 1000px;
+}
+main.container{
+    width: 1080px;
+    height: 500px;
+    margin: 30px auto;
+    background: url('./../imgs/baloto/fondo.png') no-repeat center;
+    position: relative;
+}
+
+main.container section.pantalla-balotas{
+    position: absolute;
+    width: 1000px;
+    margin: 150px 40px;
+    height: 200px;
+    background-color: rgba(255,255,255,.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+main.container section.pantalla-balotas ul li.hiden{
+    display: none;
+}
+
+main.container section.pantalla-balotas ul li{
+    list-style: none;
+    height: 150px;
+    width: 150px;
+    margin: 25px 6px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 90px;
+    line-height: 150px;
+    border-radius: 100%;
+    box-shadow: 10px 10px 20px rgb(49, 49, 49);
+}
+
+main.container section.pantalla-balotas ul li.entrar{
+    animation-name: entrar;
+    animation-duration: 2s;
+}
+
+main.container section.pantalla-balotas ul li.balotaAmarilla{
+    background: url('./../imgs/baloto/balotaAmarilla.png');
+}
+
+main.container section.pantalla-balotas ul li.balotaRoja{
+    background: url('./../imgs/baloto/balotaRoja.png');
+}
+
+button.btn-jugar{
+    outline: none;
+    height: 50px;
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    right: 410px;
+    margin: 30px auto;
+    border-radius: 5px;
+    background: url('./../imgs/baloto/btn.png');
+    border: none;
+    box-shadow: 0 5px 10px blue;
+    cursor: pointer;
+    transition: transform .5s ease-in;
+}
+
+
+button.btn-jugar:hover{
+    transform: scale(1.1);
+}
+button.btn-jugar.hide{
+    transform: scale(0);
+}
+@keyframes saltar{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+}
+
+@keyframes entrar{
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
