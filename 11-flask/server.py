@@ -1,12 +1,15 @@
+import os
 from flask import Flask, render_template, request, session, flash,redirect
 from flask_bootstrap import Bootstrap
 from bson.objectid import ObjectId
 import pymongo
+from werkzeug.security import generate_password_hash, check_password_hash
 
 #Instacia un objeto de Flask
 app = Flask(__name__)
 #Settings del app
 app.secret_key = "momongo-sama"
+app.config['UPLOAD_FOLDER'] = os.path.dirname(os.path.abspath(__file__))
 bootstrap = Bootstrap(app)
 
 #Muestra los valores por consola-------------------------
@@ -60,9 +63,26 @@ def user_add():
     try:
         _firstname = request.form['firstname']
         _lastname = request.form['lastname']
+        _password = request.form['password']
+
+        #Upload file
+        target = os.path.join(app.config['UPLOAD_FOLDER'],'static/uploads/')
+        if not os.path.isdir(target):
+            os.makedir(target)
+
+        for file in request.files.getlist('photo'):
+            filename = file.filename
+            destination = "/".join([target,filename])
+            file.save(destination)
+        
+        _photo = 'uploads/' + filename
+        _hashed_pass = generate_password_hash(_password)
+
         collection.insert_one({
             'firstname': _firstname,
-            'lastname': _lastname
+            'lastname': _lastname,
+            'password': _hashed_pass,
+            'photo': _photo
         })
         flash("Usuario creado con éxito")
         return redirect("/")
@@ -76,16 +96,33 @@ def user_edit_form(id):
 @app.route('/user/edit', methods = ['post'])
 def user_edit():
     try:
+        _old_data = get_user(_id = request.form['id'])
+
         _id = ObjectId(request.form['id'])
         _firstname = request.form['firstname']
         _lastname = request.form['lastname']
+
+        #Upload file
+        target = os.path.join(app.config['UPLOAD_FOLDER'],'static/uploads/')
+        for file in request.files.getlist('photo'):
+            filename = file.filename
+            destination = "/".join([target,filename])
+            if filename != "":
+                if 'uploads/' + filename != _old_data['photo']:
+                    os.remove("/".join([app.config['UPLOAD_FOLDER'],'static/',_old_data['photo']]))
+                    file.save(destination)  
+                    _photo = 'uploads/' + filename
+            else:
+                _photo =  _old_data['photo']
+
         collection.update(
             {
                 '_id': _id
             },
             {
             'firstname': _firstname,
-            'lastname': _lastname
+            'lastname': _lastname,
+            'photo': _photo
             }
         )
         flash("Usuario actualizado con éxito")
@@ -96,6 +133,9 @@ def user_edit():
 @app.route('/user/delete/<id>')
 def user_delete(id):
     try:
+        _old_data = get_user(_id = id)
+        os.remove("/".join([app.config['UPLOAD_FOLDER'],'static/',_old_data['photo']]))
+
         collection.remove({
             '_id': ObjectId(id)
         })
