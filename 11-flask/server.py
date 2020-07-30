@@ -1,9 +1,11 @@
 import os
-from flask import Flask, render_template, request, session, flash,redirect
+from flask import Flask, render_template, request, session, flash,redirect, url_for
 from flask_bootstrap import Bootstrap
 from bson.objectid import ObjectId
 import pymongo
 from werkzeug.security import generate_password_hash, check_password_hash
+from forms.CrearUser import CrearUsuarioForm
+from forms.EditarUser import EditarUsuarioForm
 
 #Instacia un objeto de Flask
 app = Flask(__name__)
@@ -35,6 +37,33 @@ def get_user(_id):
     return cursor
 #---------------------------------------------------------
 
+#Validar sesión-------------------------------------------
+def validate_sesion():
+    return 'firstname' in session
+
+#Upload file
+def upload_files():
+    target = os.path.join(app.config['UPLOAD_FOLDER'],'static/uploads/')
+    if not os.path.isdir(target):
+        os.makedir(target)
+
+    for file in request.files.getlist('photo'):
+        filename = file.filename
+        destination = "/".join([target,filename])
+        file.save(destination)
+    
+    return filename
+
+def delete_file(_id):
+    cursor = get_user(_id)
+    print(cursor)
+    target = os.path.join(app.config['UPLOAD_FOLDER']+'/static/',cursor['photo'])
+    if os.path.isfile(target):
+        os.remove(target)
+        return True
+    else:
+        return False
+
 #Conexión a MongoDB---------------------------------------
 try:
     host = 'mongodb://127.0.0.1:27017/'
@@ -52,95 +81,133 @@ except Exception as e:
 #Rutas----------------------------------------------------
 @app.route('/')
 def welcome_view():
-    return render_template('index.html',cursor = get_users())
+    if 'firstname' in session:
+        return render_template('index.html',cursor = get_users())
+    else: 
+        return render_template('login.html')
+
+@app.route('/login',methods = ['post'])
+def login():
+    try:
+        _firstname = request.form['firstname']
+        _password = request.form['password']
+
+        check_user = collection.find_one({'firstname':_firstname})
+        if check_user:
+            if check_password_hash(check_user['password'],_password):
+                session['firstname'] = check_user['firstname']
+                return redirect('/')
+            else:
+                flash('Contraseña errónea')
+                return redirect('/')
+        else:
+            flash('Usuario no encontrado')
+            return redirect('/')
+    except Exception as e:
+        print(e)
+
+@app.route('/logout')
+def logout():
+    session.pop('firstname',None)
+    return redirect('/')
 
 @app.route('/user/add')
 def users_add_form():
-    return render_template('users/add.html')
+    if validate_sesion():
+        form = CrearUsuarioForm(request.form)
+        return render_template('users/add.html', form=form)
+    else:
+        return redirect('/')
 
 @app.route('/user', methods = ['post'])
 def user_add():
     try:
-        _firstname = request.form['firstname']
-        _lastname = request.form['lastname']
-        _password = request.form['password']
 
-        #Upload file
-        target = os.path.join(app.config['UPLOAD_FOLDER'],'static/uploads/')
-        if not os.path.isdir(target):
-            os.makedir(target)
+        form = CrearUsuarioForm(request.form)
 
-        for file in request.files.getlist('photo'):
-            filename = file.filename
-            destination = "/".join([target,filename])
-            file.save(destination)
-        
-        _photo = 'uploads/' + filename
-        _hashed_pass = generate_password_hash(_password)
+        if form.validate():
+            _firstname = form.firstname.data
+            _lastname = form.lastname.data
+            _password = form.password.data
+            
+            filename = upload_files()
+            
+            _photo = 'uploads/' + filename
+            _hashed_pass = generate_password_hash(_password)
 
-        collection.insert_one({
-            'firstname': _firstname,
-            'lastname': _lastname,
-            'password': _hashed_pass,
-            'photo': _photo
-        })
-        flash("Usuario creado con éxito")
-        return redirect("/")
+            collection.insert_one({
+                'firstname': _firstname,
+                'lastname': _lastname,
+                'password': _hashed_pass,
+                'photo': _photo
+            })
+            flash("Usuario creado con éxito")
+            return redirect("/")
+        else:
+            return render_template('users/add.html', form=form)
     except Exception as e:
         print(e)
 
 @app.route('/user/edit/<id>')
 def user_edit_form(id):
-    return render_template('users/edit.html',user = get_user(_id = id))
+    if validate_sesion():
+        _user = get_user(_id = id)
+        form = EditarUsuarioForm(id=_user['_id'],firstname=_user['firstname'],lastname=_user['lastname'])
+        return render_template('users/edit.html',user = _user,form=form)
+    else:
+        return redirect('/')
 
 @app.route('/user/edit', methods = ['post'])
 def user_edit():
     try:
-        _old_data = get_user(_id = request.form['id'])
+        form = EditarUsuarioForm(request.form)
+        if form.validate():
 
-        _id = ObjectId(request.form['id'])
-        _firstname = request.form['firstname']
-        _lastname = request.form['lastname']
+            _id = ObjectId(form.id.data)
+            _firstname = form.firstname.data
+            _lastname = form.lastname.data
 
-        #Upload file
-        target = os.path.join(app.config['UPLOAD_FOLDER'],'static/uploads/')
-        for file in request.files.getlist('photo'):
-            filename = file.filename
-            destination = "/".join([target,filename])
-            if filename != "":
-                if 'uploads/' + filename != _old_data['photo']:
-                    os.remove("/".join([app.config['UPLOAD_FOLDER'],'static/',_old_data['photo']]))
-                    file.save(destination)  
-                    _photo = 'uploads/' + filename
+            # _id = ObjectId(request.form['id'])
+            # _firstname = request.form['firstname']
+            # _lastname = request.form['lastname']
+
+            if not request.files.get('photo',None):
+                n_values = {
+                'firstname': _firstname,
+                'lastname': _lastname
+                }
             else:
-                _photo =  _old_data['photo']
+                delete_file(_id)
+                filename = upload_files()
+                _photo = 'uploads/' + filename
+                n_values = {
+                'firstname': _firstname,
+                'lastname': _lastname,
+                'photo': _photo
+                }
 
-        collection.update(
-            {
-                '_id': _id
-            },
-            {
-            'firstname': _firstname,
-            'lastname': _lastname,
-            'photo': _photo
-            }
-        )
-        flash("Usuario actualizado con éxito")
-        return redirect("/")
+            collection.update_one({'_id': _id},{'$set': n_values})
+
+            flash("Usuario actualizado con éxito")
+            return redirect("/")
+        else:
+            return render_template('users/edit.html',user = get_user(_id=form.id.data),form=form)
+
+
     except Exception as e:
-        print(e)
+        print('DB: ', e)
 
 @app.route('/user/delete/<id>')
 def user_delete(id):
     try:
-        _old_data = get_user(_id = id)
-        os.remove("/".join([app.config['UPLOAD_FOLDER'],'static/',_old_data['photo']]))
 
-        collection.remove({
-            '_id': ObjectId(id)
-        })
-        flash("Usuario eliminado")
-        return redirect("/")
+        if delete_file(ObjectId(id)):
+            collection.remove({
+                '_id': ObjectId(id)
+            })
+            flash("Usuario eliminado")
+            return redirect("/")
+
     except Exception as e:
         print(e)
 

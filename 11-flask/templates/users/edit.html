@@ -5,7 +5,9 @@
 <h1 class="h3 text-secondary">Adicionar Usuario</h1>
 <hr>
 <form action="/user/edit" method="POST" enctype="multipart/form-data">
-	<input type="hidden" name="id" value="{{ user._id }}">
+	{{form.id(class="d-none")}}
+
+	<!-- <input type="hidden" name="id" value="{{ user._id }}"> -->
 	<div class="form-group">
 		<input type="file" class="d-none" name="photo" accept="image/*" onchange="readURL(this)" id="photo">
 		<button type="button" class="btn btn-danger btn-upload">
@@ -14,12 +16,24 @@
 		<img src="{{url_for('static',filename = user.photo)}}" alt="user" width="120px" class="img-thumbnail ml-5 img">
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" name="firstname" placeholder="Nombres" required
-			value="{{ user.firstname }}">
+		{{form.firstname(class="form-control",placeholder="Firstname")}}
+		{% if form.firstname.errors %}
+		{% for error in form.firstname.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
+		<!-- <input type="text" class="form-control" name="firstname" placeholder="Nombres" required
+			value="{{ user.firstname }}"> -->
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" name="lastname" placeholder="Apellidos" required
-			value="{{ user.lastname }}">
+		{{form.lastname(class="form-control",placeholder="Lastname")}}
+		{% if form.lastname.errors %}
+		{% for error in form.lastname.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
+		<!-- <input type="text" class="form-control" name="lastname" placeholder="Apellidos" required
+			value="{{ user.lastname }}"> -->
 	</div>
 	<div class="form-group">
 		<input type="submit" class="btn btn-dark" value="Actualizar">

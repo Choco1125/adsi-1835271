@@ -2,48 +2,56 @@
 {% block title %} [ CRUD ] - Flask(Python) - MongoDB {% endblock %}
 {% block columns %} col-md-8 offset-md-2 {% endblock %}
 {% block content %}
-	<h1 class="h3 text-secondary">Lista de Usuarios</h1>
-	<hr>
-	<a href="user/add" class="btn btn-dark"> 
-		<i class="fa fa-plus"></i> 
-		Adicionar Usuario
-	</a>
-    <br><br>
-    {% with messages = get_flashed_messages() %}
-	    {% if messages %}
-            <div class="alert alert-success alert-dismissible fade show animate__animated animate__shakeY" role="alert">
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-        {% endif %}
-    {% endwith %}
-    <table class="table table-striped table-hovered text-secondary">
-        <thead>
-            <th class="d-none d-sm-table-cell">ID</th>
-            <th>NOMBRES</th>
-            <th>APELLIDOS</th>
-            <th>ACCIONES</th>
-        </thead>
-        <tbody>
-            {% for doc in cursor %}
-            <tr>
-                <td class="d-none d-sm-table-cell"><small>{{ doc._id }}</small></td>
-                <td>{{ doc.firstname }}</td>
-                <td>{{ doc.lastname }}</td>
-                <td>
-                    <a href="user/edit/{{ doc._id }}" class="btn btn-sm btn-dark">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    <a href="user/delete/{{ doc._id }}" class="btn btn-sm btn-danger">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<h1 class="h3 text-secondary">Lista de Usuarios</h1>
+<hr>
+<a href="user/add" class="btn btn-dark">
+    <i class="fa fa-plus"></i>
+    Adicionar Usuario
+</a>
+<br><br>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show animate__animated animate__shakeY" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endwith %}
+<table class="table table-striped table-hovered text-secondary">
+    <thead>
+        <th class="d-none d-md-table-cell">ID</th>
+        <th>NOMBRES</th>
+        <th>APELLIDOS</th>
+        <th class="d-none d-md-table-cell">PHOTO</th>
+        <th>ACCIONES</th>
+    </thead>
+    <tbody>
+        {% for doc in cursor %}
+        <tr>
+            <td class="d-none d-md-table-cell"><small>{{ doc._id }}</small></td>
+            <td>{{ doc.firstname }}</td>
+            <td>{{ doc.lastname }}</td>
+            <td class="d-none d-md-table-cell">
+                {% if doc.photo %}
+                <img class="img-thumbnail img" src="{{ url_for('static', filename=doc.photo) }}" width="40px">
+                {% else %}
+                <img class="img-thumbnail img" src="{{ url_for('static', filename='imgs/user.png') }}" width="40px">
+                {% endif %}
+            </td>
+            <td>
+                <a href="user/edit/{{ doc._id }}" class="btn btn-sm btn-dark">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <a href="user/delete/{{ doc._id }}" class="btn btn-sm btn-danger btn-delete" data-id="{{ doc._id }}">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

@@ -13,13 +13,31 @@
 		<img src="{{url_for('static',filename = 'img/user.jpg')}}" alt="user" width="120px" class="img-thumbnail ml-5 img">
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" name="firstname" placeholder="Nombres" required>
+		{{form.firstname(class="form-control",placeholder="Firstname")}}
+		{% if form.firstname.errors %}
+		{% for error in form.firstname.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
+		<!-- <input type="text" class="form-control" name="firstname" placeholder="Nombres" required> -->
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" name="lastname" placeholder="Apellidos" required>
+		{{form.lastname(class="form-control",placeholder="Lastname")}}
+		{% if form.lastname.errors %}
+		{% for error in form.lastname.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
+		<!-- <input type="text" class="form-control" name="lastname" placeholder="Apellidos" required> -->
 	</div>
 	<div class="form-group">
-		<input type="password" class="form-control" name="password" placeholder="Contraseña" required autocomplete="off">
+		{{form.password(class="form-control",placeholder="Password")}}
+		{% if form.password.errors %}
+		{% for error in form.password.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
+		<!-- <input type="password" class="form-control" name="password" placeholder="Contraseña" required autocomplete="off"> -->
 	</div>
 	<div class="form-group">
 		<input type="submit" class="btn btn-dark" value="Adicionar">
