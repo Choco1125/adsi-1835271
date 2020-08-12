@@ -6,6 +6,8 @@ import pymongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms.CrearUser import CrearUsuarioForm
 from forms.EditarUser import EditarUsuarioForm
+from forms.LoginForm import LoginForm
+import time
 
 #Instacia un objeto de Flask
 app = Flask(__name__)
@@ -48,11 +50,14 @@ def upload_files():
         os.makedir(target)
 
     for file in request.files.getlist('photo'):
+        seconds = int(time.time())
         filename = file.filename
-        destination = "/".join([target,filename])
+        extension = filename.rsplit('.',1)[1].lower()
+        n_filename = "{}.{}".format(seconds,extension)
+        destination = "/".join([target,n_filename])
         file.save(destination)
     
-    return filename
+    return n_filename
 
 def delete_file(_id):
     cursor = get_user(_id)
@@ -84,18 +89,26 @@ def welcome_view():
     if 'firstname' in session:
         return render_template('index.html',cursor = get_users())
     else: 
-        return render_template('login.html')
+        form = LoginForm(request.form)
+        return render_template('login.html',form= form)
 
 @app.route('/login',methods = ['post'])
 def login():
     try:
-        _firstname = request.form['firstname']
-        _password = request.form['password']
+        form = LoginForm(request.form)
+
+        _firstname = form.firstname.data
+        _password = form.password.data
+
+        #_firstname = request.form['firstname']
+        #_password = request.form['password']
 
         check_user = collection.find_one({'firstname':_firstname})
         if check_user:
             if check_password_hash(check_user['password'],_password):
                 session['firstname'] = check_user['firstname']
+                session['lastname'] = check_user['lastname']
+                session['photo'] = check_user['photo']
                 return redirect('/')
             else:
                 flash('Contraseña errónea')
@@ -109,6 +122,8 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('firstname',None)
+    session.pop('lastname',None)
+    session.pop('photo',None)
     return redirect('/')
 
 @app.route('/user/add')

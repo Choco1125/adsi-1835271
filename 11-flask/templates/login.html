@@ -20,10 +20,20 @@
 {% endwith %}
 <form action="/login" method="POST">
   <div class="form-group">
-    <input type="text" class="form-control" name="firstname" placeholder="Nombres" required>
+		{{form.firstname(class="form-control",placeholder="Firstname")}}
+		{% if form.firstname.errors %}
+		{% for error in form.firstname.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+		{{form.password(class="form-control",placeholder="Password")}}
+		{% if form.password.errors %}
+		{% for error in form.password.errors %}
+		<span class="text-danger">{{error}}</span>
+		{% endfor %}
+		{% endif %}
   </div>
   <div class="form-group">
     <input type="submit" class="btn btn-dark" value="Ingresar">
