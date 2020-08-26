@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} [Movie App Django] {% endblock title%}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <img src="{% static 'imgs/banner.png' %}" class="img-fluid mt-5 mb-5">
+    <h3 class="text-info h4">Recently addded</h3>
+    <hr>
+    <div class="owl-carousel owl-theme">
+      {% for movie in recently_added%}
+      <div class="card mb-5">
+        <img src="{{movie.image.url}}" class="img-card-top" alt="{{movie.title}}" />
+      </div>
+      {% endfor%}
+    </div>
+    <h3 class="text-info h4">Most watched</h3>
+    <hr>
+    <div class="owl-carousel owl-theme">
+      {% for movie in most_watched%}
+      <div class="card mb-5">
+        <img src="{{movie.image.url}}" class="img-card-top" alt="{{movie.title}}" />
+      </div>
+      {% endfor%}
+    </div>
+    <h3 class="text-info h4">Top reted</h3>
+    <hr>
+    <div class="owl-carousel owl-theme">
+      {% for movie in top_rated%}
+      <div class="card mb-5">
+        <img src="{{movie.image.url}}" class="img-card-top" alt="{{movie.title}}" />
+      </div>
+      {% endfor%}
+    </div>
+  </div>
+</div>
+{% endblock content %}
