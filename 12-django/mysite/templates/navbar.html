@@ -3,22 +3,30 @@
   <a class="navbar-brand" href="/">
     <img src="{% static 'imgs/logo.png' %}" width="100px" />
   </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="/movies">
-        <i class="fa fa-list"></i> Movie list</a
-      >
+        <i class="fa fa-list"></i> Movie list</a>
     </div>
+    <ul class="navbar-nav ml-md-auto mr-5">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-clipboard-list"></i> Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'movies:movie_category' 'A' %}">Action</a>
+          <a class="dropdown-item" href="{% url 'movies:movie_category' 'D' %}">Drama</a>
+          <a class="dropdown-item" href="{% url 'movies:movie_category' 'C' %}">Comedy</a>
+          <a class="dropdown-item" href="{% url 'movies:movie_category' 'R' %}">Romance</a>
+          <a class="dropdown-item" href="{% url 'movies:movie_category' 'F' %}">Fiction</a>
+          {% comment %} <div class="dropdown-divider"></div> {% endcomment %}
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

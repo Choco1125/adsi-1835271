@@ -20,3 +20,24 @@ class MovieList(ListView):
 
 class MovieDetail(DetailView):
   model = Movie
+
+  def get_object(self):
+    object = super(MovieDetail, self).get_object()
+    object.views_count += 1
+    object.save()
+    return object
+
+class MovieCategory(ListView):
+  model = Movie
+  paginate_by = 4
+  template_name = 'movie/movie_category.html'
+
+  def get_queryset(self):
+    self.category = self.kwargs['category']
+    movies = Movie.objects.filter(category = self.category)
+    return movies
+
+  def get_context_data(self, **kwargs):
+    context = super(MovieCategory, self).get_context_data(**kwargs)
+    context['movie_category'] = self.category
+    return context
