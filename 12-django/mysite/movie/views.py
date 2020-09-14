@@ -12,6 +12,9 @@ class HomeView(ListView):
     context['top_rated'] = Movie.objects.filter(status = 'TR')
     context['most_watched'] = Movie.objects.filter(status = 'MW')
     context['recently_added'] = Movie.objects.filter(status = 'RA')
+    context['espanish'] = Movie.objects.filter(language = 'ES')
+    context['english'] = Movie.objects.filter(language = 'EN')
+    context['german'] = Movie.objects.filter(language = 'GR')
     return context
 
 class MovieList(ListView):
