@@ -28,6 +28,23 @@
           {% comment %} <div class="dropdown-divider"></div> {% endcomment %}
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-globe"></i> Languages
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'movies:movie_language' 'EN' %}">English</a>
+          <a class="dropdown-item" href="{% url 'movies:movie_language' 'ES' %}">Spanish</a>
+          <a class="dropdown-item" href="{% url 'movies:movie_language' 'GR' %}">German</a>
+        </div>
+      </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'movies:movie_search' %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q" value='{{ request.GET.q }}'>
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
   </div>
 </nav>
