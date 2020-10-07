@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -33,7 +34,14 @@ class Movie(models.Model):
     language = models.CharField(choices=LANGUAJES_CHOICES,max_length=2)
     status = models.CharField(choices=STATUS_CHOICES,max_length=2)
     year = models.DateField()
+    trailer = models.URLField(default='')
+    slug = models.SlugField(blank=True, null=True)
     views_count = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Movie, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
